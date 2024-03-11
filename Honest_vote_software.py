@@ -1,40 +1,40 @@
-print("Hello, today we are going to choose our new government.")
-print("gerb = 1, pp = 2, bsp = 3, dps = 4, vuzrajdane = 5, itn = 6")
+print("Today, we are going to choose our new government.")
+print("For CDU political formation enter 1 ")
+print("For CSU political formation enter 2 ")
+print("For SPD political formation enter 3 ")
 
-gerb = float(2)
-pp = float(1.8)
-bsp = float(1.4)
-dps = float(1.9)
-vuzrajdane = float(1.2)
-itn = float(1.7)
-
-vote_choose = float(1)
+result_cdu = 0
+result_csu = 0
+result_spd = 0
+all_voted_people = 0
 
 while True:
-    try:
-        user_vote = float(input("Enter your vote:"))
-        if 1 <= user_vote <= 6:
-            if user_vote == 1:
-                result_vote = vote_choose * gerb
-                print(f"You gave {result_vote} vote for gerb")
-            elif user_vote == 2:
-                result_vote = vote_choose * pp
-                print(f"You gave {result_vote} vote for pp")
-            elif user_vote == 3:
-                result_vote = vote_choose * bsp
-                print(f"You gave {result_vote} vote for bsp")
-            elif user_vote == 4:
-                 result_vote = vote_choose * dps
-                 print(f"You gave {result_vote} vote for dps")
-            elif user_vote == 5:
-                 result_vote = vote_choose * vuzrajdane
-                 print(f"You gave {result_vote} vote for vuzrajdane")
-            elif user_vote == 6:
-                 result_vote = vote_choose * itn
-                 print(f"You gave {result_vote} vote for itn")
-            break
+    user_vote = int(input("Please enter your vote between 1 to 3: "))
+    if user_vote == 1 or user_vote == 2 or user_vote == 3:
+        all_voted_people += 1
+    else:
+        print("Invalid vote vote can be only between 1 to 3")
+        continue
+    if user_vote == 1:
+        result_cdu += 1
+    elif user_vote == 2:
+        result_csu += 1
+    elif user_vote == 3:
+        result_spd += 1
+    if all_voted_people >= 10:
+        break
 
-        else:
-            print("You must chose number between 1 to 6")
-    except ValueError:
-        print("You can enter only number between 1 to 6. You can't enter letter.")
+
+print(f'{result_cdu} people voted for political formation CDU.')
+print(f'{result_csu} people voted for political formation CSU.')
+print(f'{result_spd} people voted for political formation SPD.')
+
+if result_cdu > result_csu and result_cdu > result_spd:
+    print('The winner is political formation CDU.')
+    print(f'They have won the elections with {(result_cdu / all_voted_people) * 100}%')
+elif result_csu > result_cdu and result_csu > result_spd:
+    print('The winner is political formation CSU.')
+    print(f'They have won the elections with {(result_csu / all_voted_people) * 100}%')
+else:
+    print('The winner is political formation SPD.')
+    print(f'They have won the elections with {(result_spd / all_voted_people) * 100}%')
